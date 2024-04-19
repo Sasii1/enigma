@@ -6,12 +6,12 @@ export default class TunnelScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.video('tunnelVideo', 'assets/images/tunnelVideo.mp4', 'canPlayType');
+        this.load.video('introVideo', 'assets/images/introVideo.mp4', 'canPlayType');
     }
 
     create() {
         console.log("Porta Tunnel : create");
-        const video = this.add.video(500, 300, 'tunnelVideo');
+        const video = this.add.video(500, 300, 'introVideo');
         video.play();
 
         // Passa alla scena del livello 2 dopo un secondo

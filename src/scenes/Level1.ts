@@ -31,9 +31,10 @@ export default class Level1 extends Phaser.Scene {
         this.scene.setVisible(true, "Level1");
         this.scene.setVisible(true, "Level2");
         this.scene.setVisible(true, "Legenda");
+        this.scene.setVisible(true, "TunnelScene");
         this.scene.add("Level2", Level2);
         this.scene.add("Legenda", Legenda);
-        this.scene.add("Tunnel", Tunnel);
+        this.scene.add("TunnelScene", Tunnel);
         this.player = new Player({ scene: this, x: 55, y: 55, key: "player" });
         this.physics.add.existing(this.player);
         Level1.music = this.sound.add("music0", { loop: true, volume: 0.1 });
@@ -82,7 +83,6 @@ export default class Level1 extends Phaser.Scene {
     create() {
         console.log("create:Level1");
         this.add.image(1024, 0, "log").setOrigin(1, 0).setDepth(14).setScale(0.3).setAlpha(1).setScrollFactor(0);
-        this.scene.add("TunnelScene", Tunnel);
     }
 
     createCollider() {
@@ -104,7 +104,7 @@ export default class Level1 extends Phaser.Scene {
             Level1.completed= false;
             Level1.music.stop();
             this.scene.start('TunnelScene');
-            this.scene.run('Level2');
+            //this.scene.run('Level2');
         }
 
         this.player.update(time, delta);
