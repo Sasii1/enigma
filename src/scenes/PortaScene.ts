@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Player from '../components/Player';
 
 export default class PortaScene extends Phaser.Scene {
     constructor() {
@@ -13,7 +14,6 @@ export default class PortaScene extends Phaser.Scene {
         console.log("Porta Scene : create");
         const video = this.add.video(500, 300, 'introVideo');
         video.play();
-
         // Passa alla scena del livello 1 dopo un secondo
         this.time.delayedCall(1500, () => {
             this.scene.start('Level1');

@@ -119,14 +119,6 @@ this.scene.get('Keypad').events.on('wake', () => {
         // Imposta la dimensione e la posizione della telecamera
         this.mainCam.setSize(cameraWidth, cameraHeight);
         this.mainCam.setPosition(cameraX, cameraY);
-
-        const maskGraphics = this.add.graphics();
-            maskGraphics.fillStyle(0x000000); // Colore nero
-            maskGraphics.fillRect(0, 0, this.map.widthInPixels, this.map.heightInPixels); // Copri l'intera mappa
-            maskGraphics.setAlpha(0.7); // Opacità del nero, puoi regolare il valore per ottenere l'effetto desiderato
-            maskGraphics.setDepth(10); // Assicurati che sia sopra tutti gli altri elementi
-            maskGraphics.fillRect(cameraX - 100, cameraY - 100, cameraWidth, cameraHeight); // Rendi nero l'area intorno al giocatore
-            maskGraphics.setDepth(10); // Assicurati che sia sopra tutti gli altri elementi
             */
          // Incrementa il tempo trascorso
          this.elapsedTime += delta;

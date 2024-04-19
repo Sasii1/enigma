@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Player from '../components/Player';
 
 export default class TunnelScene extends Phaser.Scene {
     constructor() {
@@ -10,6 +11,7 @@ export default class TunnelScene extends Phaser.Scene {
     }
 
     create() {
+        
         console.log("Porta Tunnel : create");
         const video = this.add.video(500, 300, 'TunnelScene');
         video.play();
