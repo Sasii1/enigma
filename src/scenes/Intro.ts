@@ -13,7 +13,7 @@ export default class Intro extends Phaser.Scene {
   }
 
   preload() {
-      Intro.music = this.sound.add("introMusic", { loop: true, volume: 0.8 });
+      Intro.music = this.sound.add("introMusic", { loop: true, volume: 1 });
       Intro.music.play();
     }
 
