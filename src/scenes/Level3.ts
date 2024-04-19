@@ -23,11 +23,11 @@ export default class Level3 extends Phaser.Scene {
     preload() {
       
         
-        this.player = new Player({ scene: this, x: 55, y: 55, key: "player" });
+        this.player = new Player({ scene: this, x: 105, y: 100, key: "player" });
        
         this.physics.add.existing(this.player);
         this.map = this.make.tilemap({ key: "level-3" });
-
+        
         this.mainCam = this.cameras.main;
         this.mainCam.setBounds(
             0,
@@ -42,7 +42,7 @@ export default class Level3 extends Phaser.Scene {
             this.map.widthInPixels,
             this.map.heightInPixels
         );
-        this.tileset = this.map.addTilesetImage("tilemap-extruded.png");
+        this.tileset = this.map.addTilesetImage("tilemap-extruded");
         this.layer = this.map
             .createLayer("world", this.tileset, 0, 0)
             .setDepth(3)
@@ -79,6 +79,8 @@ this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any)
 
     }
     update(time: number, delta: number): void {
+        this.player.update(time, delta);
+
      if(Level3.isCompleted){
         console.log("o fratm")
      }
