@@ -6,13 +6,13 @@ export default class Level3 extends Phaser.Scene {
     private player: Player;
     private log :Phaser.GameObjects.Image;
     public static music: Phaser.Sound.BaseSound;
-    public static completed: boolean;
     private map: Phaser.Tilemaps.Tilemap;
     private tileset: Phaser.Tilemaps.Tileset;
     private layer: Phaser.Tilemaps.TilemapLayer;
     private layer2: Phaser.Tilemaps.TilemapLayer;
     private layerEnd: Phaser.Tilemaps.TilemapLayer;
     static isCompleted: boolean;
+    private bg:Phaser.GameObjects.Image;
 
     constructor() {
         super({
@@ -23,11 +23,12 @@ export default class Level3 extends Phaser.Scene {
     preload() {
       
         
-        this.player = new Player({ scene: this, x: 105, y: 100, key: "player" });
+        this.player = new Player({ scene: this, x: 105, y: 500, key: "player" });
        
         this.physics.add.existing(this.player);
         this.map = this.make.tilemap({ key: "level-3" });
-        
+        this.bg=this.add.image(0, 0,"bg").setOrigin(0,0).setDepth(2);
+
         this.mainCam = this.cameras.main;
         this.mainCam.setBounds(
             0,
@@ -52,7 +53,7 @@ export default class Level3 extends Phaser.Scene {
             .setDepth(1)
             .setAlpha(1);
 
-        this.layerEnd = this.map.createLayer("end", this.tileset, 0, 0).setDepth(1).setAlpha(1);
+        this.layerEnd = this.map.createLayer("end", this.tileset, 0, 0).setDepth(4).setAlpha(1);
 
         this.layer2.setCollisionByProperty({ collide: true });
         this.layerEnd.setCollisionByProperty({ collide: true });
@@ -73,7 +74,7 @@ export default class Level3 extends Phaser.Scene {
        // Collider per il layer "end"
 this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any) => {
     console.log("hitted end");
-    Level3.completed= true;
+    Level3.isCompleted= true;
 }, undefined, this);
 
 

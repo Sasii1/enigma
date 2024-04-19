@@ -107,9 +107,11 @@ this.scene.get('Keypad').events.on('wake', () => {
     }
 
     update(time: number, delta: number): void {
+        
+        /*
         const cameraWidth = 2 * this.player.width; // Larghezza della telecamera
         const cameraHeight = 2 * this.player.height; // Altezza della telecamera
-
+        
         // Imposta la posizione della telecamera centrata sul giocatore
         const cameraX = Math.max(0, this.player.x - cameraWidth / 2); // Posizione X della telecamera
         const cameraY = Math.max(0, this.player.y - cameraHeight / 2); // Posizione Y della telecamera
@@ -125,7 +127,7 @@ this.scene.get('Keypad').events.on('wake', () => {
             maskGraphics.setDepth(10); // Assicurati che sia sopra tutti gli altri elementi
             maskGraphics.fillRect(cameraX - 100, cameraY - 100, cameraWidth, cameraHeight); // Rendi nero l'area intorno al giocatore
             maskGraphics.setDepth(10); // Assicurati che sia sopra tutti gli altri elementi
-
+            */
          // Incrementa il tempo trascorso
          this.elapsedTime += delta;
 
@@ -147,7 +149,7 @@ this.scene.get('Keypad').events.on('wake', () => {
             this.player.setY(55);
              Keypad.isEnter = false;
              Keypad.currentNumber = '';
-             this.scene.remove('Level2');
+             this.scene.stop('Level2');
              this.scene.remove("Legenda");
              this.scene.stop('Keypad');
              Level2.music.stop();

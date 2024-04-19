@@ -78,9 +78,10 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
                 this._body.setVelocityY(-300);
                 this.jumpSound.play();
             }
-
-            if (!this._cursors.up.isDown)
+                
+                if (!this._cursors.up.isDown)
                 this.jmp = true;
+            
 
             if (!this._cursors.left.isDown && !this._cursors.right.isDown && !this.keyA.isDown && !this.keyD.isDown && !this._cursors.up.isDown && !this._cursors.down.isDown) {
                 this._body.setVelocityX(0);
