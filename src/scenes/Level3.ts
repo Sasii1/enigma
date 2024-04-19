@@ -26,6 +26,8 @@ export default class Level3 extends Phaser.Scene {
         this.player = new Player({ scene: this, x: 105, y: 500, key: "player" });
        
         this.physics.add.existing(this.player);
+        Level3.music = this.sound.add("music2", { loop: true, volume: 1 });
+        Level3.music.play();
         this.map = this.make.tilemap({ key: "level-3" });
         this.bg=this.add.image(0, 0,"bg").setOrigin(0,0).setDepth(2);
 
@@ -84,6 +86,7 @@ this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any)
 
      if(Level3.isCompleted){
         console.log("o fratm")
+        Level3.music.stop();
      }
     }
 }

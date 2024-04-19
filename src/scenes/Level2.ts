@@ -107,19 +107,18 @@ this.scene.get('Keypad').events.on('wake', () => {
     }
 
     update(time: number, delta: number): void {
-        
-        
         const cameraWidth = 3 * this.player.width; // Larghezza della telecamera
         const cameraHeight = 1.5 * this.player.height; // Altezza della telecamera
-        
+
         // Imposta la posizione della telecamera centrata sul giocatore
         const cameraX = Math.max(0, this.player.x - cameraWidth / 2); // Posizione X della telecamera
-        const cameraY = Math.max(0, this.player.y - cameraHeight / 2);
-         // Posizione Y della telecamera
+        const cameraY = Math.max(0, this.player.y - cameraHeight / 2); // Posizione Y della telecamera
 
         // Imposta la dimensione e la posizione della telecamera
         this.mainCam.setSize(cameraWidth, cameraHeight);
         this.mainCam.setPosition(cameraX, cameraY);
+
+
          // Incrementa il tempo trascorso
          this.elapsedTime += delta;
 

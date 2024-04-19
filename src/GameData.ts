@@ -58,6 +58,15 @@ export let GameData: any = {
     { name: "x", path: "assets/images/x.png" },
     { name: "legenda", path: "assets/images/legenda.png" },
     { name: "bg", path: "assets/images/bg.png" },
+    { name: "pulsante1", path: "assets/images/simboli/pulsante1.png" },
+    { name: "pulsante2", path: "assets/images/simboli/pulsante2.png" },
+    { name: "pulsante3", path: "assets/images/simboli/pulsante3.png" },
+    { name: "pulsante4", path: "assets/images/simboli/pulsante4.png" },
+    { name: "pulsante5", path: "assets/images/simboli/pulsante5.png" },
+    { name: "pulsante6", path: "assets/images/simboli/pulsante6.png" },
+    { name: "pulsante7", path: "assets/images/simboli/pulsante7.png" },
+    { name: "pulsante8", path: "assets/images/simboli/pulsante8.png" },
+    { name: "pulsante9", path: "assets/images/simboli/pulsante9.png" },
 
   ],
   atlas: [],
@@ -68,6 +77,10 @@ export let GameData: any = {
     {
       name: "music1",
       paths: ["assets/sounds/music1.mp3"],
+    },
+    {
+      name: "music2",
+      paths: ["assets/sounds/music2.mp3"],
     },
     {
     name: "jump",

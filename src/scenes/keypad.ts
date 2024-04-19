@@ -10,14 +10,14 @@ export default class Keypad extends Phaser.Scene {
     constructor() {
         super({ key: "Keypad" });
     }
- 
+
     create() {
-        // Create keypad buttons
-        const buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'C', 'Enter'];
+        // Create keypad buttonss
+        const buttons = ['A', 'N', 'C', 'D', 'E', 'F', 'G', 'T', 'I', 'R', 'C', 'Enter'];
         const buttonWidth = 80;
         const buttonHeight = 80;
         const startX = 430;
-        const startY = 200; // Increased startY to make space for currentNumber text
+        const startY = 200;
         const padding = 10;
         let x = startX;
         let y = startY;
@@ -45,7 +45,7 @@ export default class Keypad extends Phaser.Scene {
     }
 
     private onButtonClick(label: string) {
-    
+
         if (label === 'C') {
             // Clear current number
             Keypad.currentNumber = '';
@@ -53,7 +53,7 @@ export default class Keypad extends Phaser.Scene {
             // Print current number to console
             Keypad.isEnter = true;
             console.log(Keypad.currentNumber);
-            if(Keypad.currentNumber == "10"){
+            if(Keypad.currentNumber == "NEFERTITI"){
                 console.log("Codice corretto - livello successivo");
                 this.scene.remove("Keypad");
                 Keypad.success = true;
@@ -64,6 +64,6 @@ export default class Keypad extends Phaser.Scene {
         }
         // Update the text to display currentNumber
         this.currentNumberText.setText(Keypad.currentNumber);
-        
+
     }
 }
