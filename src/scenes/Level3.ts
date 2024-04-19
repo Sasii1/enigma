@@ -42,7 +42,7 @@ export default class Level3 extends Phaser.Scene {
             this.map.widthInPixels,
             this.map.heightInPixels
         );
-        this.tileset = this.map.addTilesetImage("tilemap-extruded");
+        this.tileset = this.map.addTilesetImage("tilemap-mappa3");
         this.layer = this.map
             .createLayer("world", this.tileset, 0, 0)
             .setDepth(3)
@@ -52,16 +52,16 @@ export default class Level3 extends Phaser.Scene {
             .setDepth(1)
             .setAlpha(1);
 
-        //this.layerEnd = this.map.createLayer("end", this.tileset, 0, 0).setDepth(1).setAlpha(1);
+        this.layerEnd = this.map.createLayer("end", this.tileset, 0, 0).setDepth(1).setAlpha(1);
 
         this.layer2.setCollisionByProperty({ collide: true });
-        //this.layerEnd.setCollisionByProperty({ collide: true });
+        this.layerEnd.setCollisionByProperty({ collide: true });
 
         this.createCollider();
         
     }
     create(){
-        console.log("create:Level2");
+        console.log("create:Level3");
         this.add.image(1024, 0, "log").setOrigin(1, 0).setDepth(14).setScale(0.3).setAlpha(1).setScrollFactor(0);
 
     }
