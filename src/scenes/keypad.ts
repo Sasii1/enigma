@@ -10,7 +10,7 @@ export default class Keypad extends Phaser.Scene {
     constructor() {
         super({ key: "Keypad" });
     }
-
+ 
     create() {
         // Create keypad buttons
         const buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'C', 'Enter'];

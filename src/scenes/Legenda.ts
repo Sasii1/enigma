@@ -10,7 +10,7 @@ export default class Legenda extends Phaser.Scene{
         super({
         key: "Legenda",
         });
-
+ 
     }
 
     create(){

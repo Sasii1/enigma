@@ -121,7 +121,7 @@ export default class Level1 extends Phaser.Scene {
             });
         }
     // Dichiarazione di una variabile per tenere traccia dello stato del tasto I
-
+ 
 // Nel tuo ciclo di aggiornamento o nel metodo appropriato
 if (this.keyI.isDown && !this.isIKeyDown && !this.isLegendaOpen) {
     // Impostare lo stato del tasto a "premuto"

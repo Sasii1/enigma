@@ -54,4 +54,4 @@ export default class PauseHud extends Phaser.Scene{
             }
         ).setOrigin(0.5,0.5).setDepth(14).setScale(0.3).setAlpha(1);
     };
-}
+} 

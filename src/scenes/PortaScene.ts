@@ -7,7 +7,7 @@ export default class PortaScene extends Phaser.Scene {
 
     preload() {
         this.load.video('introVideo', 'assets/images/introVideo.mp4', 'canPlayType');
-    }
+    } 
 
     create() {
         console.log("Porta Scene : create");

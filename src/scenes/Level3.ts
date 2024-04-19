@@ -58,7 +58,7 @@ export default class Level3 extends Phaser.Scene {
         this.layerEnd.setCollisionByProperty({ collide: true });
 
         this.createCollider();
-        
+         
     }
     create(){
         console.log("create:Level3");

@@ -162,7 +162,7 @@ this.scene.get('Keypad').events.on('wake', () => {
                 Keypad.isEnter = false;
                 Keypad.currentNumber = '';
             }
-        }
+        } 
 
         this.player.update(time, delta);
 

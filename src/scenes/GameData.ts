@@ -6,7 +6,7 @@ export let GameData: any = {
     bgColor: "#ffffff",
     debug: false,
   },
-
+ 
   preloader: {
     bgColor: "",
     image: "phaser",
