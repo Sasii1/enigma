@@ -4,7 +4,7 @@ export let GameData: any = {
     gameWidth: 1024,
     gameHeight: 600,
     bgColor: "#ffffff",
-    debug: true,
+    debug: false,
   },
 
   preloader: {
@@ -54,20 +54,9 @@ export let GameData: any = {
     { name: "base", path: "assets/images/base.png" },
     { name: "continua", path: "assets/images/contiuna.png" },
     { name: "esci", path: "assets/images/esci.png" },
-    { name: "1", path: "assets/images/1.png" },
-    { name: "x", path: "assets/images/x.png" },
     { name: "legenda", path: "assets/images/legenda.png" },
     { name: "bg", path: "assets/images/bg.png" },
-    { name: "pulsante1", path: "assets/images/simboli/pulsante1.png" },
-    { name: "pulsante2", path: "assets/images/simboli/pulsante2.png" },
-    { name: "pulsante3", path: "assets/images/simboli/pulsante3.png" },
-    { name: "pulsante4", path: "assets/images/simboli/pulsante4.png" },
-    { name: "pulsante5", path: "assets/images/simboli/pulsante5.png" },
-    { name: "pulsante6", path: "assets/images/simboli/pulsante6.png" },
-    { name: "pulsante7", path: "assets/images/simboli/pulsante7.png" },
-    { name: "pulsante8", path: "assets/images/simboli/pulsante8.png" },
-    { name: "pulsante9", path: "assets/images/simboli/pulsante9.png" },
-
+  
   ],
   atlas: [],
   sounds: [{

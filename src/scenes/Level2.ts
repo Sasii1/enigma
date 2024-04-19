@@ -1,4 +1,5 @@
 import Player from "../components/Player";
+import Bigdoor from "./Bigdoor";
 import Level3 from "./Level3";
 import PauseHud from "./PauseHud";
 import Keypad from "./keypad";
@@ -13,11 +14,10 @@ export default class Level2 extends Phaser.Scene {
     private layer: Phaser.Tilemaps.TilemapLayer;
     private layer2: Phaser.Tilemaps.TilemapLayer;
     private layerEnd: Phaser.Tilemaps.TilemapLayer;
+    private layerBack: Phaser.Tilemaps.TilemapLayer;
     private keyEsc: any;
     private keyI: any;
     private isLegendaOpen: boolean;
-    private initialAlpha: number = 0.5;
-    private elapsedTime: number = 0;
     private isIKeyDown: boolean = false;
 
     constructor() {
@@ -33,7 +33,9 @@ export default class Level2 extends Phaser.Scene {
         this.scene.setVisible(true, "Level3");
         this.scene.add("Level3", Level3);
         this.scene.setVisible(true, "Legenda");
-        this.player = new Player({ scene: this, x: 55, y: 55, key: "player" });
+        this.scene.add("Bigdoor", Bigdoor);
+        this.scene.setVisible(true, "Bigdoor");
+        this.player = new Player({ scene: this, x: 150, y: 500, key: "player" });
         Level2.music = this.sound.add("music1", { loop: true, volume: 0.8 });
         Level2.music.play();
         this.physics.add.existing(this.player);
@@ -69,12 +71,16 @@ export default class Level2 extends Phaser.Scene {
             .createLayer("end", this.tileset, 0, 0)
             .setDepth(1)
             .setAlpha(1);
+            this.layerBack = this.map
+            .createLayer("back", this.tileset, 0, 0)
+            .setDepth(1)
+            .setAlpha(1);
         this.layer2.setCollisionByProperty({ collide: true });
         this.layerEnd.setCollisionByProperty({ collide: true });
+        this.layerBack.setCollisionByProperty({ collide: true });
+
         this.createCollider();
-         this.layer.setAlpha(this.initialAlpha);
-         this.layer2.setAlpha(this.initialAlpha);
-         this.layerEnd.setAlpha(this.initialAlpha);
+
 
         this.scene.launch("Overlay");
     }
@@ -86,23 +92,35 @@ export default class Level2 extends Phaser.Scene {
     }
 
     createCollider() {
+
         this.physics.add.collider(this.player, this.layer2, (_player: any, _tile: any) => {
         }, undefined, this);
-this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any) => {
-    this.scene.launch('Keypad');
-    console.log("hitted end");
-    Level2.completed= true;
-}, undefined, this);
 
-this.scene.get('Keypad').events.on('wake', () => {
-    this.scene.remove('Keypad');
+        this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any) => {
+            console.log("hitted end");
+            this.scene.launch('Keypad');
+            Level2.completed= true;
+            }, undefined, this);
 
-});
+        this.physics.add.collider(this.player, this.layerBack, (_player: any, _tile: any) => {
+            console.log("hitted back");
+            this.scene.remove("Level2");
+            this.scene.remove("Keypad");
+            this.scene.remove("Level3");
+            this.scene.remove("Bigdoor");
+            this.scene.remove("Legenda");
+            this.scene.remove("TunnelScene");
+            Level2.music.stop();
+            this.scene.launch("Level1");
+            }, undefined, this);
+
+        
+
     }
 
     update(time: number, delta: number): void {
         this.player.update(time, delta);
-
+        
         const cameraWidth = 3 * this.player.width;
         const cameraHeight = 1.5 * this.player.height;
 
@@ -112,16 +130,7 @@ this.scene.get('Keypad').events.on('wake', () => {
         this.mainCam.setSize(cameraWidth, cameraHeight);
         this.mainCam.setPosition(cameraX, cameraY);
 
-         /*this.elapsedTime += delta;
-
-         if (this.elapsedTime >= 1000) {
-             this.layer.setAlpha(Math.min(1, this.layer.alpha + 3));
-             this.layer2.setAlpha(Math.min(1, this.layer2.alpha + 3));
-             this.layerEnd.setAlpha(Math.min(1, this.layerEnd.alpha + 3));
-
-             this.elapsedTime = 0;
-         }*/
-
+    
         if (Keypad.success) {
             Keypad.success = false;
             Keypad.isEnter = false;
@@ -133,7 +142,7 @@ this.scene.get('Keypad').events.on('wake', () => {
             this.scene.stop('Keypad');
             Level2.music.stop();
             Level2.completed = false;
-            this.scene.run('Level3');
+            this.scene.run('Bigdoor');
         }else{
             if(Level2.completed && Keypad.inputTesto != "10" && Keypad.isEnter){
                 this.player.setX(55);
