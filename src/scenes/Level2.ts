@@ -72,7 +72,6 @@ export default class Level2 extends Phaser.Scene {
         this.layer2.setCollisionByProperty({ collide: true });
         this.layerEnd.setCollisionByProperty({ collide: true });
         this.createCollider();
-         // Imposta l'opacità iniziale dei layer della mappa
          this.layer.setAlpha(this.initialAlpha);
          this.layer2.setAlpha(this.initialAlpha);
          this.layerEnd.setAlpha(this.initialAlpha);
@@ -87,20 +86,15 @@ export default class Level2 extends Phaser.Scene {
     }
 
     createCollider() {
-        // Collider per il layer di collisione generale
         this.physics.add.collider(this.player, this.layer2, (_player: any, _tile: any) => {
-            // Azioni quando il giocatore collide con il layer "collisions"
         }, undefined, this);
-       // Collider per il layer "end"
 this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any) => {
     this.scene.launch('Keypad');
     console.log("hitted end");
     Level2.completed= true;
 }, undefined, this);
 
-// Aggiungi un listener per l'evento 'wake' sulla scena del tastierino
 this.scene.get('Keypad').events.on('wake', () => {
-    // Rimuovi la scena corrente dallo schermo
     this.scene.remove('Keypad');
 
 });
