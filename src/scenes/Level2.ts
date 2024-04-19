@@ -83,7 +83,7 @@ export default class Level2 extends Phaser.Scene {
     create() {
         console.log("create:Level2");
         this.add.image(1024, 0, "log").setOrigin(1, 0).setDepth(14).setScale(0.3).setAlpha(1).setScrollFactor(0);
-
+        
     }
 
     createCollider() {
@@ -108,26 +108,18 @@ this.scene.get('Keypad').events.on('wake', () => {
 
     update(time: number, delta: number): void {
         
-        /*
-        const cameraWidth = 2 * this.player.width; // Larghezza della telecamera
-        const cameraHeight = 2 * this.player.height; // Altezza della telecamera
+        
+        const cameraWidth = 4 * this.player.width; // Larghezza della telecamera
+        const cameraHeight = 3 * this.player.height; // Altezza della telecamera
         
         // Imposta la posizione della telecamera centrata sul giocatore
         const cameraX = Math.max(0, this.player.x - cameraWidth / 2); // Posizione X della telecamera
-        const cameraY = Math.max(0, this.player.y - cameraHeight / 2); // Posizione Y della telecamera
+        const cameraY = Math.max(0, this.player.y - cameraHeight / 2);
+         // Posizione Y della telecamera
 
         // Imposta la dimensione e la posizione della telecamera
         this.mainCam.setSize(cameraWidth, cameraHeight);
         this.mainCam.setPosition(cameraX, cameraY);
-
-        const maskGraphics = this.add.graphics();
-            maskGraphics.fillStyle(0x000000); // Colore nero
-            maskGraphics.fillRect(0, 0, this.map.widthInPixels, this.map.heightInPixels); // Copri l'intera mappa
-            maskGraphics.setAlpha(0.7); // Opacità del nero, puoi regolare il valore per ottenere l'effetto desiderato
-            maskGraphics.setDepth(10); // Assicurati che sia sopra tutti gli altri elementi
-            maskGraphics.fillRect(cameraX - 100, cameraY - 100, cameraWidth, cameraHeight); // Rendi nero l'area intorno al giocatore
-            maskGraphics.setDepth(10); // Assicurati che sia sopra tutti gli altri elementi
-            */
          // Incrementa il tempo trascorso
          this.elapsedTime += delta;
 
