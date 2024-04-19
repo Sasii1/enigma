@@ -19,20 +19,6 @@ export default class Preloader extends Phaser.Scene {
   }
 
   init() {
-    /*this._image = this.add
-      .image(
-        GameData.preloader.imageX,
-        GameData.preloader.imageY,
-        GameData.preloader.image
-      )
-      .setAlpha(0);*/
-
-    this.tweens.add({
-      targets: [this._image],
-      alpha: 1,
-      duration: 500,
-    });
-
     this._loading = this.add
       .bitmapText(this.game.canvas.width / 2, 580, "arcade", "", 30)
       .setAlpha(1)
@@ -56,17 +42,6 @@ export default class Preloader extends Phaser.Scene {
       console.log("complete")
       this.scene.start("Intro");
 
-      /*this._loading.setText("Clicca per iniziare!");
-      this.input.once("pointerdown", () => {
-        this.tweens.add({
-          targets: [this._image, this._loading],
-          alpha: 0,
-          duration: 500,
-          onComplete: () => {
-            this.scene.start("Intro");
-          },
-        });
-      });*/
     });
 
 

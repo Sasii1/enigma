@@ -1,10 +1,6 @@
-import Level1 from "./Level1";
-
 export default class Keypad extends Phaser.Scene {
-    private base: Phaser.GameObjects.Image;
-    private static level: number;
-    static currentNumber: string = '';
-    private currentNumberText: Phaser.GameObjects.Text;
+    static inputTesto: string = '';
+    private Text: Phaser.GameObjects.Text;
     static isEnter:boolean;
     static success: boolean;
     constructor() {
@@ -12,7 +8,6 @@ export default class Keypad extends Phaser.Scene {
     }
 
     create() {
-        // Create keypad buttonss
         const buttons = ['A', 'N', 'C', 'D', 'E', 'F', 'G', 'T', 'I', 'R', 'C', 'Enter'];
         const buttonWidth = 80;
         const buttonHeight = 80;
@@ -21,11 +16,11 @@ export default class Keypad extends Phaser.Scene {
         const padding = 10;
         let x = startX;
         let y = startY;
-        // Add text to display currentNumber
+
         const currentNumberRectangle = this.add.rectangle(startX + 90, startY - 90, (buttonWidth + padding) * 3 - 10, buttonHeight, 0x666666)
             .setOrigin(0.5);
 
-        this.currentNumberText = this.add.text(currentNumberRectangle.x, currentNumberRectangle.y, Keypad.currentNumber, { fontSize: '44px', color: '#cccc98' })
+        this.Text = this.add.text(currentNumberRectangle.x, currentNumberRectangle.y, Keypad.inputTesto, { fontSize: '44px', color: '#cccc98' })
             .setOrigin(0.5);
 
         buttons.forEach((label, index) => {
@@ -47,23 +42,20 @@ export default class Keypad extends Phaser.Scene {
     private onButtonClick(label: string) {
 
         if (label === 'C') {
-            // Clear current number
-            Keypad.currentNumber = '';
+            Keypad.inputTesto = '';
         } else if (label === 'Enter') {
-            // Print current number to console
             Keypad.isEnter = true;
-            console.log(Keypad.currentNumber);
-            if(Keypad.currentNumber == "NEFERTITI"){
-                console.log("Codice corretto - livello successivo");
+            console.log(Keypad.inputTesto);
+            if(Keypad.inputTesto == "NEFERTITI"){
+                console.log("vai");
                 this.scene.remove("Keypad");
                 Keypad.success = true;
             }
         } else {
-            // Concatenate the clicked number
-            Keypad.currentNumber += label;
+            Keypad.inputTesto += label;
         }
-        // Update the text to display currentNumber
-        this.currentNumberText.setText(Keypad.currentNumber);
+
+        this.Text.setText(Keypad.inputTesto);
 
     }
 }

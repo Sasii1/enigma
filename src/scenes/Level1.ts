@@ -6,7 +6,6 @@ import Tunnel from "./TunnelScene";
 export default class Level1 extends Phaser.Scene {
     private mainCam: Phaser.Cameras.Scene2D.Camera;
     private player: Player;
-    private log: Phaser.GameObjects.Image;
     public static music: Phaser.Sound.BaseSound;
     public static completed: boolean;
     private map: Phaser.Tilemaps.Tilemap;
@@ -17,7 +16,6 @@ export default class Level1 extends Phaser.Scene {
     private keyEsc: any;
     private keyI: any;
     private isLegendaOpen: boolean;
-    private elapsedTime: number = 0;
     private isIKeyDown: boolean = false;
 
     constructor() {
@@ -87,7 +85,6 @@ export default class Level1 extends Phaser.Scene {
 
     createCollider() {
         this.physics.add.collider(this.player, this.layer2, (_player: any, _tile: any) => {
-            // Actions when player collides with "collisions" layer
         }, undefined, this);
 
         this.physics.add.collider(this.player, this.layerEnd, (_player: any, _tile: any) => {
@@ -104,7 +101,6 @@ export default class Level1 extends Phaser.Scene {
             Level1.completed= false;
             Level1.music.stop();
             this.scene.start('TunnelScene');
-            //this.scene.run('Level2');
         }
 
         this.player.update(time, delta);
@@ -120,16 +116,13 @@ export default class Level1 extends Phaser.Scene {
                 }, callbackScope: this
             });
         }
-    // Dichiarazione di una variabile per tenere traccia dello stato del tasto I
  
 
 if (this.keyI.isDown && !this.isIKeyDown && !this.isLegendaOpen) {
-    // Impostare lo stato del tasto a "premuto"
     this.isIKeyDown = true;
     this.scene.launch("Legenda");
     this.isLegendaOpen = true;
 
-    // Avvia un evento di ritardo per reimpostare lo stato del tasto dopo un breve intervallo di tempo
     this.time.addEvent({
         delay: 300,
         loop: false,
@@ -152,7 +145,6 @@ if (this.keyI.isDown && !this.isIKeyDown && !this.isLegendaOpen) {
         callbackScope: this
     });
 } else if (!this.keyI.isDown) {
-    // Se il tasto non è premuto, reimposta lo stato del tasto
     this.isIKeyDown = false;
 }
 

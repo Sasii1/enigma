@@ -24,12 +24,7 @@ export default class Intro extends Phaser.Scene {
     let bg = this.add.image(0, 0, "principale").setOrigin(0, 0).setDepth(0).setDisplaySize(this.game.canvas.width, this.game.canvas.height).setInteractive().on(
       "pointerdown", () => {
         console.log("premi sulla porta per iniziare ");
-        if (Level2.music.isPlaying)
-          Level2.music.stop();
-        if (Level1.music.isPlaying)
-          Level1.music.stop();
-
-        Intro.music.stop(); // Ferma la musica intro al clic sulla porta
+        Intro.music.stop();
         this.scene.start("PortaScene");
       });
 
@@ -37,11 +32,7 @@ export default class Intro extends Phaser.Scene {
   }
 
   update(time: number, delta: number): void {
-    let bg = this.add.image(0, 0, "principale").setOrigin(0, 0).setDepth(0).setDisplaySize(this.game.canvas.width, this.game.canvas.height).setInteractive().on("pointerdown", () => {
-      console.log("premi sulla porta per iniziare ");
-      Intro.music.stop(); // Ferma la musica intro al clic sulla porta
-      this.scene.start("PortaScene");
-    });
+   
   }
 
 }

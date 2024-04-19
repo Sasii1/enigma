@@ -101,57 +101,50 @@ this.scene.get('Keypad').events.on('wake', () => {
     }
 
     update(time: number, delta: number): void {
-        const cameraWidth = 3 * this.player.width; // Larghezza della telecamera
-        const cameraHeight = 1.5 * this.player.height; // Altezza della telecamera
+        this.player.update(time, delta);
 
-        // Imposta la posizione della telecamera centrata sul giocatore
-        const cameraX = Math.max(0, this.player.x - cameraWidth / 2); // Posizione X della telecamera
-        const cameraY = Math.max(0, this.player.y - cameraHeight / 2); // Posizione Y della telecamera
+        const cameraWidth = 3 * this.player.width;
+        const cameraHeight = 1.5 * this.player.height;
 
-        // Imposta la dimensione e la posizione della telecamera
+        const cameraX = Math.max(0, this.player.x - cameraWidth / 2); 
+        const cameraY = Math.max(0, this.player.y - cameraHeight / 2);
+
         this.mainCam.setSize(cameraWidth, cameraHeight);
         this.mainCam.setPosition(cameraX, cameraY);
 
+         /*this.elapsedTime += delta;
 
-         // Incrementa il tempo trascorso
-         this.elapsedTime += delta;
-
-         // Esegui un'azione ogni tot millisecondi
          if (this.elapsedTime >= 1000) {
-             // Aumenta l'opacità dei layer della mappa
              this.layer.setAlpha(Math.min(1, this.layer.alpha + 3));
              this.layer2.setAlpha(Math.min(1, this.layer2.alpha + 3));
              this.layerEnd.setAlpha(Math.min(1, this.layerEnd.alpha + 3));
 
-             // Resetta il tempo trascorso
              this.elapsedTime = 0;
-         }
+         }*/
 
         if (Keypad.success) {
             Keypad.success = false;
-            // Carica il livello successivo
+            Keypad.isEnter = false;
+            Keypad.inputTesto = '';
             this.player.setX(55);
             this.player.setY(55);
-             Keypad.isEnter = false;
-             Keypad.currentNumber = '';
-             this.scene.stop('Level2');
-             this.scene.remove("Legenda");
-             this.scene.stop('Keypad');
-             Level2.music.stop();
-             this.scene.run('Level3');
-             Level2.completed = false;
+            this.scene.stop('Level2');
+            this.scene.remove("Legenda");
+            this.scene.stop('Keypad');
+            Level2.music.stop();
+            Level2.completed = false;
+            this.scene.run('Level3');
         }else{
-            if(Level2.completed && Keypad.currentNumber != "10" && Keypad.isEnter){
+            if(Level2.completed && Keypad.inputTesto != "10" && Keypad.isEnter){
                 this.player.setX(55);
                 this.player.setY(55);
                 this.scene.stop('Keypad');
                 this.scene.stop("Legenda");
                 Keypad.isEnter = false;
-                Keypad.currentNumber = '';
+                Keypad.inputTesto = '';
             }
         } 
 
-        this.player.update(time, delta);
 
         if (this.keyEsc.isDown) {
             Level2.music.pause();
@@ -164,14 +157,10 @@ this.scene.get('Keypad').events.on('wake', () => {
                 }, callbackScope: this
             });
         }
-        // Nel tuo ciclo di aggiornamento o nel metodo appropriato
         if (this.keyI.isDown && !this.isIKeyDown && !this.isLegendaOpen) {
-            // Impostare lo stato del tasto a "premuto"
             this.isIKeyDown = true;
             this.scene.launch("Legenda");
             this.isLegendaOpen = true;
-
-            // Avvia un evento di ritardo per reimpostare lo stato del tasto dopo un breve intervallo di tempo
             this.time.addEvent({
                 delay: 300,
                 loop: false,
@@ -184,7 +173,6 @@ this.scene.get('Keypad').events.on('wake', () => {
             this.isIKeyDown = true;
             this.scene.stop("Legenda");
             this.isLegendaOpen = false;
-
             this.time.addEvent({
                 delay: 300,
                 loop: false,
@@ -194,7 +182,6 @@ this.scene.get('Keypad').events.on('wake', () => {
                 callbackScope: this
             });
         } else if (!this.keyI.isDown) {
-            // Se il tasto non è premuto, reimposta lo stato del tasto
             this.isIKeyDown = false;
         }
     }
