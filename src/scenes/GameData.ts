@@ -50,14 +50,16 @@ export let GameData: any = {
 
   ],
   atlas: [],
-  sounds: [{
-    name: "music0",
-    paths: ["assets/sounds/music0.mp3"],
-    },
+  sounds: [
+    {
+      name: "test",
+      paths: ["assets/sounds/test.mp3"],
+      },
     {
     name: "jump",
     paths: ["assets/sounds/jump.mp3"],
     }
+    
   ],
   audio: [],
   bitmapfont: [],

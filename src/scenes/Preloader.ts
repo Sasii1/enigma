@@ -19,13 +19,13 @@ export default class Preloader extends Phaser.Scene {
   }
 
   init() {
-    this._image = this.add
+    /*this._image = this.add
       .image(
         GameData.preloader.imageX,
         GameData.preloader.imageY,
         GameData.preloader.image
       )
-      .setAlpha(0);
+      .setAlpha(0);*/
 
     this.tweens.add({
       targets: [this._image],
@@ -54,7 +54,9 @@ export default class Preloader extends Phaser.Scene {
     
     this.load.on("complete", () => {
       console.log("complete")
-      this._loading.setText("Clicca per iniziare!");
+      this.scene.start("Intro");
+
+      /*this._loading.setText("Clicca per iniziare!");
       this.input.once("pointerdown", () => {
         this.tweens.add({
           targets: [this._image, this._loading],
@@ -64,7 +66,7 @@ export default class Preloader extends Phaser.Scene {
             this.scene.start("Intro");
           },
         });
-      });
+      });*/
     });
 
 
