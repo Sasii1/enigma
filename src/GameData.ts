@@ -57,6 +57,7 @@ export let GameData: any = {
     { name: "legenda", path: "assets/images/legenda.png" },
     { name: "bg", path: "assets/images/bg.png" },
     { name: "howtoplay", path: "assets/images/howtoplay.png" },
+    { name: "credits", path: "assets/images/credits.png" },
 
   ],
   atlas: [],

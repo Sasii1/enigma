@@ -43,7 +43,7 @@ export default class Intro extends Phaser.Scene {
       this.createHow();
     });
 
-    this.howToPlayText=this.add.text(950,550,"Credits",{fontSize:"26px"})
+    this.creditsText=this.add.text(950,550,"Credits",{fontSize:"26px"})
     .setColor("White")
     .setOrigin(0.5,0.5)
     .setFontStyle("bold")
@@ -51,7 +51,7 @@ export default class Intro extends Phaser.Scene {
     .setInteractive()
     .on("pointerdown",()=>{
       console.log("credits");
-      this.createHow();
+      this.credits();
     });
   }
 
@@ -65,7 +65,7 @@ export default class Intro extends Phaser.Scene {
 
   credits(){
     this.creditsText.setInteractive(false);
-    let base:Phaser.GameObjects.Image=this.add.image(this.game.canvas.width/2,300,"howtoplay").setOrigin(0.5,0.5).setDepth(12).setInteractive().on("pointerdown",()=>{
+    let base:Phaser.GameObjects.Image=this.add.image(this.game.canvas.width/2,300,"credits").setOrigin(0.5,0.5).setDepth(12).setInteractive().on("pointerdown",()=>{
       base.destroy();
       this.creditsText.setInteractive(true);
     });       
