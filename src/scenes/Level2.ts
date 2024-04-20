@@ -117,6 +117,7 @@ export default class Level2 extends Phaser.Scene {
             this.scene.remove("Legenda");
             this.scene.remove("TunnelScene");
             this.scene.remove('GameOver');
+            this.scene.remove('Overlay');
 
             Level2.music.stop();
             this.scene.launch("Level1");
@@ -171,7 +172,7 @@ export default class Level2 extends Phaser.Scene {
             }
         } 
 
-
+    
         if (this.keyEsc.isDown) {
             Level2.music.pause();
             this.player.pause = true;

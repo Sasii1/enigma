@@ -1,3 +1,4 @@
+import { CANVAS } from "phaser";
 import Level1 from "./Level1";
 import Level2 from "./Level2";
 import PortaScene from "./PortaScene";
@@ -20,7 +21,7 @@ export default class Intro extends Phaser.Scene {
     }
 
   create() {
- 
+      console.log(this.game.canvas.width + "px", this.game.canvas.height)
 
     this.scene.add("PortaScene", PortaScene);
     let bg = this.add.image(0, 0, "principale").setOrigin(0, 0).setDepth(0).setDisplaySize(this.game.canvas.width, this.game.canvas.height).setInteractive().on(

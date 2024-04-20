@@ -11,7 +11,7 @@ export default class Legenda extends Phaser.Scene{
 
     create(){
         this.scene.bringToTop();
-        this.sfondo=this.add.image(125,150,"legenda").setDepth(12);
+        this.sfondo=this.add.image(110,200,"legenda").setDepth(12);
 
         
     };

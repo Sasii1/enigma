@@ -4,6 +4,7 @@ import Level2 from "./Level2";
 import Legenda from "./Legenda";
 import Tunnel from "./TunnelScene";
 import Overlay from "./Overlay";
+import GameOver from "./GameOver";
 
 export default class Level1 extends Phaser.Scene {
     private mainCam: Phaser.Cameras.Scene2D.Camera;
@@ -17,6 +18,7 @@ export default class Level1 extends Phaser.Scene {
     private layerEnd: Phaser.Tilemaps.TilemapLayer;
     private keyEsc: any;
     private keyI: any;
+    private keyK: any;
     private isLegendaOpen: boolean;
     private isIKeyDown: boolean = false;
 
@@ -34,6 +36,8 @@ export default class Level1 extends Phaser.Scene {
         this.scene.setVisible(true, "TunnelScene");
         this.scene.setVisible(true, "Overlay");
         this.scene.add("Overlay", Overlay);
+        this.scene.setVisible(true, "GameOver");
+        this.scene.add("GameOver", GameOver);
         this.scene.add("Level2", Level2);
         this.scene.add("Legenda", Legenda);
         this.scene.add("TunnelScene", Tunnel);
@@ -44,6 +48,8 @@ export default class Level1 extends Phaser.Scene {
         this.map = this.make.tilemap({ key: "level-1" });
         this.keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
         this.keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
+        this.keyK = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+
         this.isLegendaOpen = false;
         this.mainCam = this.cameras.main;
 
@@ -99,12 +105,20 @@ export default class Level1 extends Phaser.Scene {
 
     update(time: number, delta: number): void {
 
-
+        if(this.keyK.isDown){
+            this.scene.remove("Level1");
+            this.scene.remove("Overlay");
+            this.scene.remove("Legenda");
+            this.scene.remove("TunnelScene");
+            this.scene.start("GameOver");
+        }
         if (Level1.completed) {
-            this.scene.stop('Level1');
             Level1.completed= false;
             Level1.music.stop();
             this.scene.remove("Overlay");
+            this.scene.remove("GameOver");
+            this.scene.remove("Legenda");
+           
             this.scene.start('TunnelScene');
         }
 

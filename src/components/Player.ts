@@ -64,10 +64,7 @@ export default class Player extends Phaser.GameObjects.Sprite implements IPlayer
     }
     right: boolean;
     update(time: number, delta: number) {
-        console.log("delta:");
-        console.log(delta);
-        console.log("time:");
-        console.log(time);
+        
         if (this.scene != undefined && !this.pause) {
 
             if ((this._cursors.left.isDown || this.keyA.isDown) && !this.walkSound.isPlaying) {
