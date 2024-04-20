@@ -1,6 +1,7 @@
 import Player from "../components/Player";
 import Bigdoor from "./Bigdoor";
 import GameOver from "./GameOver";
+import Legenda from "./Legenda";
 import Level3 from "./Level3";
 import Overlay from "./Overlay";
 import PauseHud from "./PauseHud";
@@ -38,7 +39,10 @@ export default class Level2 extends Phaser.Scene {
         this.scene.add("GameOver", GameOver);
         this.scene.setVisible(true, "Level3");
         this.scene.add("Level3", Level3);
+        this.scene.add("Legenda", Legenda);
+
         this.scene.setVisible(true, "Legenda");
+        
         this.scene.add("Bigdoor", Bigdoor);
         this.scene.setVisible(true, "Bigdoor");
         this.player = new Player({ scene: this, x: 150, y: 500, key: "player" });
