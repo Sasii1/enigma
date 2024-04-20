@@ -113,6 +113,8 @@ export default class Level2 extends Phaser.Scene {
             this.scene.remove("Bigdoor");
             this.scene.remove("Legenda");
             this.scene.remove("TunnelScene");
+            this.scene.remove('GameOver');
+
             Level2.music.stop();
             this.scene.launch("Level1");
             }, undefined, this);
@@ -125,7 +127,7 @@ export default class Level2 extends Phaser.Scene {
         this.player.update(time, delta);
        
         const cameraWidth = 3 * this.player.width;
-        const cameraHeight = 1.5 * this.player.height;
+        const cameraHeight = 2 * this.player.height;
 
         const cameraX = Math.max(0, this.player.x - cameraWidth / 2); 
         const cameraY = Math.max(0, this.player.y - cameraHeight / 2);
@@ -138,18 +140,19 @@ export default class Level2 extends Phaser.Scene {
             Keypad.success = false;
             Keypad.isEnter = false;
             Keypad.inputTesto = '';
-            this.player.setX(55);
-            this.player.setY(55);
+            this.player.setX(150);
+            this.player.setY(550);
             this.scene.stop('Level2');
             this.scene.remove("Legenda");
             this.scene.stop('Keypad');
+            this.scene.remove('GameOver');
             Level2.music.stop();
             Level2.completed = false;
             this.scene.run('Bigdoor');
         }else{
             if(Level2.completed && Keypad.inputTesto != "NEFERTITI" && Keypad.isEnter && this.tentativiKeypad > 0){
-                this.player.setX(55);
-                this.player.setY(55);
+                this.player.setX(150);
+                this.player.setY(550);
                 this.scene.stop('Keypad');
                 this.scene.stop("Legenda");
                 Keypad.isEnter = false;
