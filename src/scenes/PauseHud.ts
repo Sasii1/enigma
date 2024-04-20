@@ -36,20 +36,6 @@ export default class PauseHud extends Phaser.Scene{
 
         this.esci=this.add.image(1024/2,300+70,"esci").setInteractive().on("pointerdown",()=>{
             window.location.reload();
-            /*this.base.setAlpha(0);
-            this.continua.setAlpha(0);
-            this.esci.setAlpha(0);
-            this.scene.setVisible(false,"Overlay");
-            this.scene.stop("Level"+ PauseHud.level.toString());
-            this.scene.remove("Level"+PauseHud.level.toString());
-            this.scene.stop("Keypad");
-            this.scene.remove("Legenda")
-            this.scene.remove("PortaScene");
-            this.scene.start("Intro");
-            if(PauseHud.level==1){
-                Level1.music.play();}
-                else if(PauseHud.level==2)
-                    Level2.music.play();*/
             }
         ).setOrigin(0.5,0.5).setDepth(14).setScale(0.3).setAlpha(1);
     };

@@ -1,5 +1,6 @@
 import Player from "../components/Player";
 import Bigdoor from "./Bigdoor";
+import GameOver from "./GameOver";
 import Level3 from "./Level3";
 import PauseHud from "./PauseHud";
 import Keypad from "./keypad";
@@ -30,6 +31,8 @@ export default class Level2 extends Phaser.Scene {
         PauseHud.setLevel(2);
         this.scene.setVisible(true, "Keypad");
         this.scene.add("Keypad", Keypad);
+        this.scene.setVisible(true, "GameOver");
+        this.scene.add("GameOver", GameOver);
         this.scene.setVisible(true, "Level3");
         this.scene.add("Level3", Level3);
         this.scene.setVisible(true, "Legenda");
@@ -117,10 +120,10 @@ export default class Level2 extends Phaser.Scene {
         
 
     }
-
+    tentativiKeypad: number = 3;
     update(time: number, delta: number): void {
         this.player.update(time, delta);
-        
+       
         const cameraWidth = 3 * this.player.width;
         const cameraHeight = 1.5 * this.player.height;
 
@@ -144,13 +147,19 @@ export default class Level2 extends Phaser.Scene {
             Level2.completed = false;
             this.scene.run('Bigdoor');
         }else{
-            if(Level2.completed && Keypad.inputTesto != "10" && Keypad.isEnter){
+            if(Level2.completed && Keypad.inputTesto != "NEFERTITI" && Keypad.isEnter && this.tentativiKeypad > 0){
                 this.player.setX(55);
                 this.player.setY(55);
                 this.scene.stop('Keypad');
                 this.scene.stop("Legenda");
                 Keypad.isEnter = false;
                 Keypad.inputTesto = '';
+                this.tentativiKeypad--
+            }else{
+                if(this.tentativiKeypad == 0){
+                    this.scene.stop('Level2');
+                    this.scene.launch('GameOver');
+               }
             }
         } 
 

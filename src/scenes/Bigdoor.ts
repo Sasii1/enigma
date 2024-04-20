@@ -14,7 +14,7 @@ export default class Bigdoor extends Phaser.Scene {
         const video = this.add.video(500, 300, 'Bigdoor');
         video.play();
  
-        this.time.delayedCall(1000, () => {
+        this.time.delayedCall(1500, () => {
             this.scene.start('Level3');
         });
     }

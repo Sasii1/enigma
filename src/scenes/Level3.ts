@@ -1,4 +1,5 @@
 import Player from "../components/Player";
+import End from "./End";
 
 export default class Level3 extends Phaser.Scene { 
     private mainCam: Phaser.Cameras.Scene2D.Camera;
@@ -20,6 +21,8 @@ export default class Level3 extends Phaser.Scene {
     }
 
     preload() {
+        this.scene.add("End",End);
+        this.scene.setVisible(true, "End");
         this.player = new Player({ scene: this, x: 105, y: 500, key: "player" });
         this.physics.add.existing(this.player);
         Level3.music = this.sound.add("music2", { loop: true, volume: 1 });
@@ -67,6 +70,8 @@ export default class Level3 extends Phaser.Scene {
         if(Level3.isCompleted){
             console.log("o fratm")
             Level3.music.stop();
+            this.scene.stop("Level3");
+            this.scene.start("End");  
             }
     }
 }
