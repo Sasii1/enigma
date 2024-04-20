@@ -149,6 +149,7 @@ export default class Level2 extends Phaser.Scene {
             this.scene.remove("Legenda");
             this.scene.stop('Keypad');
             this.scene.remove('GameOver');
+            this.scene.remove('Overlay');
             Level2.music.stop();
             Level2.completed = false;
             this.scene.run('Bigdoor');
