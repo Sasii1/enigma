@@ -2,6 +2,7 @@ import Player from "../components/Player";
 import Bigdoor from "./Bigdoor";
 import GameOver from "./GameOver";
 import Level3 from "./Level3";
+import Overlay from "./Overlay";
 import PauseHud from "./PauseHud";
 import Keypad from "./keypad";
 export default class Level2 extends Phaser.Scene {
@@ -31,6 +32,8 @@ export default class Level2 extends Phaser.Scene {
         PauseHud.setLevel(2);
         this.scene.setVisible(true, "Keypad");
         this.scene.add("Keypad", Keypad);
+        this.scene.setVisible(true, "Overlay");
+        this.scene.add("Overlay", Overlay);
         this.scene.setVisible(true, "GameOver");
         this.scene.add("GameOver", GameOver);
         this.scene.setVisible(true, "Level3");
@@ -157,7 +160,8 @@ export default class Level2 extends Phaser.Scene {
                 this.scene.stop("Legenda");
                 Keypad.isEnter = false;
                 Keypad.inputTesto = '';
-                this.tentativiKeypad--
+                this.tentativiKeypad--;
+                Overlay.updateScore(0,this.tentativiKeypad,true,false);
             }else{
                 if(this.tentativiKeypad == 0){
                     this.scene.stop('Level2');

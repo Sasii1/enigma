@@ -10,8 +10,9 @@ export default class GameOver extends Phaser.Scene {
     }
 
     create() {
-        console.log("Bigdoor : create");
+        console.log("GameOver : create");
         const video = this.add.video(500, 300, 'GameOver');
+        video.setScale(0.6);
         video.play();
  
         this.time.delayedCall(5000, () => {

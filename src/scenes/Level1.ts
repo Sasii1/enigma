@@ -3,6 +3,8 @@ import PauseHud from "./PauseHud";
 import Level2 from "./Level2";
 import Legenda from "./Legenda";
 import Tunnel from "./TunnelScene";
+import Overlay from "./Overlay";
+
 export default class Level1 extends Phaser.Scene {
     private mainCam: Phaser.Cameras.Scene2D.Camera;
     private player: Player;
@@ -30,6 +32,8 @@ export default class Level1 extends Phaser.Scene {
         this.scene.setVisible(true, "Level2");
         this.scene.setVisible(true, "Legenda");
         this.scene.setVisible(true, "TunnelScene");
+        this.scene.setVisible(true, "Overlay");
+        this.scene.add("Overlay", Overlay);
         this.scene.add("Level2", Level2);
         this.scene.add("Legenda", Legenda);
         this.scene.add("TunnelScene", Tunnel);
@@ -100,6 +104,7 @@ export default class Level1 extends Phaser.Scene {
             this.scene.stop('Level1');
             Level1.completed= false;
             Level1.music.stop();
+            this.scene.remove("Overlay");
             this.scene.start('TunnelScene');
         }
 
